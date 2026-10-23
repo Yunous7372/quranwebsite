@@ -74,6 +74,9 @@
       </div>
 
       <div class="top-bar-actions">
+        <a href="editor.html" style="color:#FEF3C7; font-size:0.82rem; font-weight:700; display:inline-flex; align-items:center; gap:0.3rem; margin-right:0.75rem; text-decoration:none;">
+          <span>✏️</span> ایڈیٹر (Editor)
+        </a>
         <!-- Language Switcher -->
         <button class="lang-toggle-btn" id="langSwitchBtn" aria-label="Toggle language">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
@@ -105,6 +108,7 @@
           <li><a href="#trial" class="nav-link" data-i18n="navTrial">Free Trial</a></li>
           <li><a href="#contact" class="nav-link" data-i18n="navContact">Contact Us</a></li>
           <li><a href="admin-inquiries.html" class="nav-link" style="color: var(--color-gold);" data-i18n="navInquiries">Admin Portal</a></li>
+          <li><a href="editor.html" class="nav-link" style="color: var(--color-gold); font-weight:700;">✏️ ایڈیٹر (Editor)</a></li>
         </ul>
       </nav>
 
@@ -146,6 +150,7 @@
         <li><a href="#trial" data-i18n="navTrial">Free Trial</a></li>
         <li><a href="#contact" data-i18n="navContact">Contact Us</a></li>
         <li><a href="admin-inquiries.html" data-i18n="navInquiries">Admin Portal</a></li>
+        <li><a href="editor.html" style="color: var(--color-gold); font-weight:700;">✏️ Website Editor (ایڈیٹر)</a></li>
       </ul>
     </div>
 
@@ -962,6 +967,7 @@
           <a href="privacy.html" data-i18n="footerPrivacy">Privacy Policy</a>
           <a href="terms.html" data-i18n="footerTerms">Terms &amp; Conditions</a>
           <a href="admin-inquiries.html" data-i18n="footerAdmin">Admin Portal</a>
+          <a href="editor.html" style="color:var(--color-gold);">Website Editor</a>
         </div>
       </div>
     </div>
@@ -970,8 +976,10 @@
   <!-- Scripts -->
   <script src="js/config.js"></script>
   <script src="js/translations.js"></script>
+  <script src="js/editor-core.js"></script>
   <script src="js/main.js"></script>
   <script src="js/forms.js"></script>
+  <script src="js/live-editor.js"></script>
   <script>
     // Update year dynamically
     document.getElementById('currentYear').textContent = new Date().getFullYear();

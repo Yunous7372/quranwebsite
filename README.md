@@ -54,7 +54,13 @@ Welcome to the official web portal for **Dar-e-Arqam Online Quran Academy** (Ø¯Ø
    - 1-Click WhatsApp button to message parents directly.
    - Export all registrations to a CSV spreadsheet (compatible with Microsoft Excel and Google Sheets).
 
-9. **Additional Pages & Compliance**:
+9. **Complete Visual Website Editor & CMS (`editor.html`)**:
+   - **In-Page Live Visual Editing**: Click on any text, title, or course directly on the website to change it with one click!
+   - **Visual CMS Dashboard (`editor.html`)**: Update WhatsApp, phone, email, headlines, course descriptions, 1-click color themes, and about sections.
+   - **Direct GitHub Push**: Push your changes directly to the GitHub repository and live website from within the editor!
+   - **File Exporter**: Download clean updated `config.js` and `translations.js` anytime.
+
+10. **Additional Pages & Compliance**:
    - `privacy.html`: Dedicated Privacy Policy tailored for an online Islamic academy.
    - `terms.html`: Dedicated Terms & Conditions covering class attendance and decorum.
    - `courses.html`, `about.html`, `contact.html`: Dedicated sub-pages.

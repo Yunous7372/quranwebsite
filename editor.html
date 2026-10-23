@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Editor &amp; CMS | Dar-e-Arqam Online Quran Academy</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/logo-icon.svg">
+  <link rel="stylesheet" href="css/style.css?v=purple">
+  <link rel="stylesheet" href="css/rtl.css?v=purple">
+  <style>
+    :root {
+      --editor-bg: #F8FAF9;
+      --editor-card: #FFFFFF;
+      --editor-sidebar: #1E1035;
+      --editor-border: #E2ECE6;
+    }
+    body {
+      background-color: var(--editor-bg);
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    /* Editor Layout */
+    .editor-layout {
+      display: flex;
+      min-height: 100vh;
+    }
+    /* Sidebar */
+    .editor-sidebar {
+      width: 280px;
+      background: var(--editor-sidebar);
+      color: #FFF;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      border-right: 2px solid #F59E0B;
+    }
+    .sidebar-header {
+      padding: 1.75rem 1.5rem;
+      border-bottom: 1px solid rgba(245, 158, 11, 0.25);
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .sidebar-header img {
+      width: 44px;
+      height: 44px;
+    }
+    .sidebar-header h2 {
+      font-size: 1.15rem;
+      color: #FFF;
+      margin: 0;
+      font-family: var(--font-serif);
+      line-height: 1.2;
+    }
+    .sidebar-header span {
+      font-size: 0.72rem;
+      color: #FEF3C7;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .editor-nav {
+      list-style: none;
+      padding: 1rem 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .editor-nav-item {
+      padding: 0.85rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: #E2E8F0;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.94rem;
+      transition: all 0.2s ease;
+      border-left: 4px solid transparent;
+    }
+    .editor-nav-item:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: #F59E0B;
+    }
+    .editor-nav-item.active {
+      background: rgba(245, 158, 11, 0.15);
+      color: #F59E0B;
+      border-left-color: #F59E0B;
+    }
+    .sidebar-footer {
+      padding: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    /* Main Content Area */
+    .editor-main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .editor-topbar {
+      background: #FFFFFF;
+      padding: 1rem 2rem;
+      border-bottom: 1.5px solid var(--editor-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .editor-topbar-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+    .editor-body {
+      padding: 2.5rem 2rem;
+      max-width: 1100px;
+      width: 100%;
+      margin: 0 auto;
+      box-sizing: border-box;
+    }
+    .editor-tab-panel {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .editor-tab-panel.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    /* Cards & Form Styles */
+    .cms-card {
+      background: #FFFFFF;
+      border-radius: 16px;
+      border: 1.5px solid var(--editor-border);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      padding: 2rem;
+      margin-bottom: 2rem;
+    }
+    .cms-card-header {
+      margin-bottom: 1.5rem;
+      border-bottom: 1px solid #F1F5F9;
+      padding-bottom: 1rem;
+    }
+    .cms-card-header h3 {
+      font-size: 1.35rem;
+      color: var(--color-dark-purple);
+      margin: 0 0 0.35rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .cms-card-header p {
+      color: #64748B;
+      font-size: 0.92rem;
+      margin: 0;
+    }
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+    }
+    .form-group-cms {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 1.25rem;
+    }
+    .form-group-cms label {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #1E293B;
+      display: flex;
+      justify-content: space-between;
+    }
+    .form-group-cms label span.sub {
+      font-weight: 400;
+      color: #64748B;
+      font-size: 0.8rem;
+    }
+    .input-cms {
+      padding: 0.75rem 1rem;
+      border: 1.5px solid #CBD5E1;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: #0F172A;
+      background: #F8FAFC;
+      transition: all 0.2s ease;
+    }
+    .input-cms:focus {
+      outline: none;
+      border-color: #7C3AED;
+      background: #FFF;
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+    }
+    textarea.input-cms {
+      resize: vertical;
+      min-height: 90px;
+    }
+    .input-cms-urdu {
+      direction: rtl;
+      text-align: right;
+      font-family: 'Noto Nastaliq Urdu', 'Amiri', serif;
+      line-height: 1.9;
+    }
+    /* Theme Preset Cards */
+    .theme-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .theme-preset-card {
+      border: 2px solid #E2E8F0;
+      border-radius: 12px;
+      padding: 1.25rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      background: #FFF;
+      text-align: center;
+    }
+    .theme-preset-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      border-color: #F59E0B;
+    }
+    .theme-preset-card.active {
+      border-color: #7C3AED;
+      box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
+    }
+    .theme-preview-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .theme-dot {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      border: 2px solid #FFF;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    }
+    .theme-preset-name {
+      font-weight: 700;
+      font-size: 0.94rem;
+      color: #1E293B;
+    }
+    /* Toast Alert */
+    #editorAlertToast {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #15082A;
+      color: #FEF3C7;
+      border: 2px solid #F59E0B;
+      padding: 1rem 1.75rem;
+      border-radius: 12px;
+      font-weight: 700;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.4);
+      z-index: 10000;
+      display: none;
+      animation: toastSlide 0.3s ease;
+    }
+    @keyframes toastSlide {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+    /* GitHub Push Card */
+    .github-box {
+      background: #FAF8FF;
+      border: 2px dashed #DDD6FE;
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-top: 1rem;
+    }
+    @media (max-width: 900px) {
+      .editor-layout {
+        flex-direction: column;
+      }
+      .editor-sidebar {
+        width: 100%;
+      }
+      .form-grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="editor-layout">
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="editor-sidebar">
+    <div>
+      <div class="sidebar-header">
+        <img src="assets/icons/logo-icon.svg" alt="Dar-e-Arqam Logo">
+        <div>
+          <h2>Website Editor</h2>
+          <span>اکیڈمی کنٹرول پینل</span>
+        </div>
+      </div>
+
+      <ul class="editor-nav">
+        <li class="editor-nav-item active" data-tab="tab-contact">
+          <span>📞</span> Contact &amp; Academy Info
+        </li>
+        <li class="editor-nav-item" data-tab="tab-theme">
+          <span>🎨</span> Colors &amp; Styling
+        </li>
+        <li class="editor-nav-item" data-tab="tab-hero">
+          <span>🏠</span> Homepage &amp; Hero
+        </li>
+        <li class="editor-nav-item" data-tab="tab-courses">
+          <span>📚</span> Courses Manager
+        </li>
+        <li class="editor-nav-item" data-tab="tab-whyus">
+          <span>✨</span> Why Choose Us
+        </li>
+        <li class="editor-nav-item" data-tab="tab-about">
+          <span>📖</span> About Us Section
+        </li>
+        <li class="editor-nav-item" data-tab="tab-export">
+          <span>🚀</span> Save &amp; GitHub Push
+        </li>
+      </ul>
+    </div>
+
+    <div class="sidebar-footer">
+      <a href="index.html" target="_blank" class="btn btn-outline-gold btn-sm" style="text-align: center;">
+        👁️ Preview Live Site
+      </a>
+      <button id="btnResetDefaults" class="btn btn-sm" style="background: rgba(239, 68, 68, 0.15); color: #FCA5A5; border: 1px solid #EF4444;">
+        🔄 Reset to Defaults
+      </button>
+    </div>
+  </aside>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="editor-main">
+    <!-- Top Bar -->
+    <header class="editor-topbar">
+      <div>
+        <h2 style="font-size: 1.35rem; color: var(--color-dark-purple); margin: 0;">
+          Dar-e-Arqam Academy CMS
+        </h2>
+        <span style="font-size: 0.82rem; color: #64748B;">
+          Make changes here and save instantly to your website and GitHub repository
+        </span>
+      </div>
+
+      <div class="editor-topbar-actions">
+        <button id="btnSaveTop" class="btn btn-gold btn-sm">
+          💾 Save Changes (محفوظ کریں)
+        </button>
+        <a href="index.html" target="_blank" class="btn btn-outline-dark btn-sm">
+          Visit Website &rarr;
+        </a>
+      </div>
+    </header>
+
+    <!-- Body Panels -->
+    <div class="editor-body">
+
+      <!-- ================= TAB 1: CONTACT & ACADEMY INFO ================= -->
+      <div id="tab-contact" class="editor-tab-panel active">
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>📞 Contact &amp; Academy Information</h3>
+            <p>Update phone numbers, WhatsApp, email, and social media handles across all pages.</p>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group-cms">
+              <label for="cfgWhatsApp">WhatsApp Number <span class="sub">(e.g. 923433857288)</span></label>
+              <input type="text" id="cfgWhatsApp" class="input-cms" placeholder="923433857288">
+            </div>
+
+            <div class="form-group-cms">
+              <label for="cfgPhone">Phone Display Text <span class="sub">(e.g. +92 343 3857288)</span></label>
+              <input type="text" id="cfgPhone" class="input-cms" placeholder="+92 343 3857288">
+            </div>
+
+            <div class="form-group-cms">
+              <label for="cfgEmail">Academy Official Email</label>
+              <input type="email" id="cfgEmail" class="input-cms" placeholder="info@darearqamquran.com">
+            </div>
+
+            <div class="form-group-cms">
+              <label for="cfgLocationEn">Operating Location (English)</label>
+              <input type="text" id="cfgLocationEn" class="input-cms" placeholder="Online Quran Education (Worldwide Classes)">
+            </div>
+          </div>
+
+          <div class="form-group-cms">
+            <label for="cfgLocationUr">Operating Location (Urdu)</label>
+            <input type="text" id="cfgLocationUr" class="input-cms input-cms-urdu" placeholder="آن لائن قرآنی تعلیم (پوری دنیا میں تدریسی سہولت)">
+          </div>
+
+          <h4 style="margin: 1.5rem 0 1rem; color: var(--color-dark-purple); font-size: 1.1rem;">Social Media Links</h4>
+          <div class="form-grid-2">
+            <div class="form-group-cms">
+              <label for="cfgFb">Facebook URL</label>
+              <input type="url" id="cfgFb" class="input-cms" placeholder="https://facebook.com/darearqamquran">
+            </div>
+            <div class="form-group-cms">
+              <label for="cfgIg">Instagram URL</label>
+              <input type="url" id="cfgIg" class="input-cms" placeholder="https://instagram.com/darearqamquran">
+            </div>
+            <div class="form-group-cms">
+              <label for="cfgYt">YouTube URL</label>
+              <input type="url" id="cfgYt" class="input-cms" placeholder="https://youtube.com/@darearqamquran">
+            </div>
+            <div class="form-group-cms">
+              <label for="cfgEndpoint">Form Submission Webhook / Formspree URL <span class="sub">(Optional)</span></label>
+              <input type="url" id="cfgEndpoint" class="input-cms" placeholder="https://formspree.io/f/your-form-id">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 2: THEME & COLOR STUDIO ================= -->
+      <div id="tab-theme" class="editor-tab-panel">
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>🎨 1-Click Color Themes</h3>
+            <p>Pick one of the handcrafted Islamic royal color palettes to transform your entire academy in seconds.</p>
+          </div>
+
+          <div class="theme-grid">
+            <div class="theme-preset-card active" data-preset="purple">
+              <div class="theme-preview-dots">
+                <div class="theme-dot" style="background: #2E1065;"></div>
+                <div class="theme-dot" style="background: #7C3AED;"></div>
+                <div class="theme-dot" style="background: #F59E0B;"></div>
+              </div>
+              <div class="theme-preset-name">💜 Royal Purple &amp; Gold</div>
+              <span style="font-size: 0.78rem; color:#64748B;">Imperial &amp; Spiritual</span>
+            </div>
+
+            <div class="theme-preset-card" data-preset="emerald">
+              <div class="theme-preview-dots">
+                <div class="theme-dot" style="background: #064E3B;"></div>
+                <div class="theme-dot" style="background: #059669;"></div>
+                <div class="theme-dot" style="background: #F59E0B;"></div>
+              </div>
+              <div class="theme-preset-name">💚 Royal Emerald &amp; Gold</div>
+              <span style="font-size: 0.78rem; color:#64748B;">Classic Islamic</span>
+            </div>
+
+            <div class="theme-preset-card" data-preset="navy">
+              <div class="theme-preview-dots">
+                <div class="theme-dot" style="background: #0F172A;"></div>
+                <div class="theme-dot" style="background: #2563EB;"></div>
+                <div class="theme-dot" style="background: #F59E0B;"></div>
+              </div>
+              <div class="theme-preset-name">💙 Majestic Navy &amp; Gold</div>
+              <span style="font-size: 0.78rem; color:#64748B;">Modern Educational</span>
+            </div>
+
+            <div class="theme-preset-card" data-preset="midnight">
+              <div class="theme-preview-dots">
+                <div class="theme-dot" style="background: #0F172A;"></div>
+                <div class="theme-dot" style="background: #475569;"></div>
+                <div class="theme-dot" style="background: #F59E0B;"></div>
+              </div>
+              <div class="theme-preset-name">🖤 Midnight Charcoal</div>
+              <span style="font-size: 0.78rem; color:#64748B;">Dignified &amp; Sleek</span>
+            </div>
+
+            <div class="theme-preset-card" data-preset="maroon">
+              <div class="theme-preview-dots">
+                <div class="theme-dot" style="background: #4C0519;"></div>
+                <div class="theme-dot" style="background: #E11D48;"></div>
+                <div class="theme-dot" style="background: #F59E0B;"></div>
+              </div>
+              <div class="theme-preset-name">❤️ Deep Ruby &amp; Gold</div>
+              <span style="font-size: 0.78rem; color:#64748B;">Warm &amp; Prestige</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>🎨 Custom Color Customization</h3>
+            <p>Fine-tune individual brand colors to your exact taste.</p>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group-cms">
+              <label for="colPrimary">Primary Dark Color (Headers, Hero, Footer)</label>
+              <input type="color" id="colPrimary" class="input-cms" value="#2E1065" style="height: 45px; padding: 4px;">
+            </div>
+
+            <div class="form-group-cms">
+              <label for="colAccent">Accent Brand Color (Badges, Buttons)</label>
+              <input type="color" id="colAccent" class="input-cms" value="#7C3AED" style="height: 45px; padding: 4px;">
+            </div>
+
+            <div class="form-group-cms">
+              <label for="colGold">Royal Gold Color (Accents &amp; Stars)</label>
+              <input type="color" id="colGold" class="input-cms" value="#F59E0B" style="height: 45px; padding: 4px;">
+            </div>
+
+            <div class="form-group-cms">
+              <label for="colBg">Page Background Color</label>
+              <input type="color" id="colBg" class="input-cms" value="#FAF8FF" style="height: 45px; padding: 4px;">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 3: HOMEPAGE & HERO ================= -->
+      <div id="tab-hero" class="editor-tab-panel">
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>🏠 Homepage Hero Section Texts</h3>
+            <p>Customize the main headline, subtitle, and badges in English and Urdu.</p>
+          </div>
+
+          <div class="form-group-cms">
+            <label for="heroHeadEn">Hero Headline (English)</label>
+            <input type="text" id="heroHeadEn" class="input-cms">
+          </div>
+
+          <div class="form-group-cms">
+            <label for="heroHeadUr">Hero Headline (Urdu / اردو ہیڈلائن)</label>
+            <input type="text" id="heroHeadUr" class="input-cms input-cms-urdu">
+          </div>
+
+          <div class="form-group-cms">
+            <label for="heroSubEn">Hero Subtitle (English)</label>
+            <textarea id="heroSubEn" class="input-cms"></textarea>
+          </div>
+
+          <div class="form-group-cms">
+            <label for="heroSubUr">Hero Subtitle (Urdu / اردو ذیلی عنوان)</label>
+            <textarea id="heroSubUr" class="input-cms input-cms-urdu"></textarea>
+          </div>
+
+          <div class="form-grid-2">
+            <div class="form-group-cms">
+              <label for="heroBadgeEn">Hero Badge Text (English)</label>
+              <input type="text" id="heroBadgeEn" class="input-cms">
+            </div>
+            <div class="form-group-cms">
+              <label for="heroBadgeUr">Hero Badge Text (Urdu)</label>
+              <input type="text" id="heroBadgeUr" class="input-cms input-cms-urdu">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 4: COURSES MANAGER ================= -->
+      <div id="tab-courses" class="editor-tab-panel">
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>📚 Sacred Courses Manager</h3>
+            <p>Edit course titles, descriptions, and learning points for all 7 courses.</p>
+          </div>
+
+          <!-- Noorani Qaida -->
+          <div style="border: 1px solid #E2E8F0; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; background: #FFF;">
+            <h4 style="margin: 0 0 1rem; color: var(--color-dark-purple);">1. Noorani Qaida (نورانی قاعدہ)</h4>
+            <div class="form-grid-2">
+              <div class="form-group-cms">
+                <label>Title (English)</label>
+                <input type="text" id="c1TitleEn" class="input-cms">
+              </div>
+              <div class="form-group-cms">
+                <label>Title (Urdu)</label>
+                <input type="text" id="c1TitleUr" class="input-cms input-cms-urdu">
+              </div>
+            </div>
+            <div class="form-group-cms">
+              <label>Description (English)</label>
+              <textarea id="c1DescEn" class="input-cms"></textarea>
+            </div>
+            <div class="form-group-cms">
+              <label>Description (Urdu)</label>
+              <textarea id="c1DescUr" class="input-cms input-cms-urdu"></textarea>
+            </div>
+          </div>
+
+          <!-- Madani Qaida -->
+          <div style="border: 1px solid #E2E8F0; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; background: #FFF;">
+            <h4 style="margin: 0 0 1rem; color: var(--color-dark-purple);">2. Madani Qaida (مدنی قاعدہ)</h4>
+            <div class="form-grid-2">
+              <div class="form-group-cms">
+                <label>Title (English)</label>
+                <input type="text" id="c2TitleEn" class="input-cms">
+              </div>
+              <div class="form-group-cms">
+                <label>Title (Urdu)</label>
+                <input type="text" id="c2TitleUr" class="input-cms input-cms-urdu">
+              </div>
+            </div>
+            <div class="form-group-cms">
+              <label>Description (English)</label>
+              <textarea id="c2DescEn" class="input-cms"></textarea>
+            </div>
+            <div class="form-group-cms">
+              <label>Description (Urdu)</label>
+              <textarea id="c2DescUr" class="input-cms input-cms-urdu"></textarea>
+            </div>
+          </div>
+
+          <!-- Quran Reading Nazra -->
+          <div style="border: 1px solid #E2E8F0; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; background: #FFF;">
+            <h4 style="margin: 0 0 1rem; color: var(--color-dark-purple);">3. Quran Reading Nazra (ناظرہ قرآن پاک)</h4>
+            <div class="form-grid-2">
+              <div class="form-group-cms">
+                <label>Title (English)</label>
+                <input type="text" id="c3TitleEn" class="input-cms">
+              </div>
+              <div class="form-group-cms">
+                <label>Title (Urdu)</label>
+                <input type="text" id="c3TitleUr" class="input-cms input-cms-urdu">
+              </div>
+            </div>
+            <div class="form-group-cms">
+              <label>Description (English)</label>
+              <textarea id="c3DescEn" class="input-cms"></textarea>
+            </div>
+            <div class="form-group-cms">
+              <label>Description (Urdu)</label>
+              <textarea id="c3DescUr" class="input-cms input-cms-urdu"></textarea>
+            </div>
+          </div>
+
+          <!-- Quran with Tajweed -->
+          <div style="border: 1px solid #E2E8F0; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; background: #FFF;">
+            <h4 style="margin: 0 0 1rem; color: var(--color-dark-purple);">4. Quran with Tajweed (تجوید کے ساتھ قرآن)</h4>
+            <div class="form-grid-2">
+              <div class="form-group-cms">
+                <label>Title (English)</label>
+                <input type="text" id="c4TitleEn" class="input-cms">
+              </div>
+              <div class="form-group-cms">
+                <label>Title (Urdu)</label>
+                <input type="text" id="c4TitleUr" class="input-cms input-cms-urdu">
+              </div>
+            </div>
+            <div class="form-group-cms">
+              <label>Description (English)</label>
+              <textarea id="c4DescEn" class="input-cms"></textarea>
+            </div>
+            <div class="form-group-cms">
+              <label>Description (Urdu)</label>
+              <textarea id="c4DescUr" class="input-cms input-cms-urdu"></textarea>
+            </div>
+          </div>
+
+          <!-- Quran Memorization (Hifz) -->
+          <div style="border: 1px solid #E2E8F0; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; background: #FFF;">
+            <h4 style="margin: 0 0 1rem; color: var(--color-dark-purple);">5. Quran Memorization Hifz (حفظ القرآن)</h4>
+            <div class="form-grid-2">
+              <div class="form-group-cms">
+                <label>Title (English)</label>
+                <input type="text" id="c5TitleEn" class="input-cms">
+              </div>
+              <div class="form-group-cms">
+                <label>Title (Urdu)</label>
+                <input type="text" id="c5TitleUr" class="input-cms input-cms-urdu">
+              </div>
+            </div>
+            <div class="form-group-cms">
+              <label>Description (English)</label>
+              <textarea id="c5DescEn" class="input-cms"></textarea>
+            </div>
+            <div class="form-group-cms">
+              <label>Description (Urdu)</label>
+              <textarea id="c5DescUr" class="input-cms input-cms-urdu"></textarea>
+            </div>
+          </div>
+
+          <!-- Basic Islamic Studies -->
+          <div style="border: 1px solid #E2E8F0; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; background: #FFF;">
+            <h4 style="margin: 0 0 1rem; color: var(--color-dark-purple);">6. Basic Islamic Studies (بنیادی اسلامی تعلیمات)</h4>
+            <div class="form-grid-2">
+              <div class="form-group-cms">
+                <label>Title (English)</label>
+                <input type="text" id="c6TitleEn" class="input-cms">
+              </div>
+              <div class="form-group-cms">
+                <label>Title (Urdu)</label>
+                <input type="text" id="c6TitleUr" class="input-cms input-cms-urdu">
+              </div>
+            </div>
+            <div class="form-group-cms">
+              <label>Description (English)</label>
+              <textarea id="c6DescEn" class="input-cms"></textarea>
+            </div>
+            <div class="form-group-cms">
+              <label>Description (Urdu)</label>
+              <textarea id="c6DescUr" class="input-cms input-cms-urdu"></textarea>
+            </div>
+          </div>
+
+          <!-- Daily Duas and Salah -->
+          <div style="border: 1px solid #E2E8F0; border-radius: 10px; padding: 1.25rem; margin-bottom: 1.5rem; background: #FFF;">
+            <h4 style="margin: 0 0 1rem; color: var(--color-dark-purple);">7. Daily Duas and Salah (روزمرہ کی دعائیں اور نماز)</h4>
+            <div class="form-grid-2">
+              <div class="form-group-cms">
+                <label>Title (English)</label>
+                <input type="text" id="c7TitleEn" class="input-cms">
+              </div>
+              <div class="form-group-cms">
+                <label>Title (Urdu)</label>
+                <input type="text" id="c7TitleUr" class="input-cms input-cms-urdu">
+              </div>
+            </div>
+            <div class="form-group-cms">
+              <label>Description (English)</label>
+              <textarea id="c7DescEn" class="input-cms"></textarea>
+            </div>
+            <div class="form-group-cms">
+              <label>Description (Urdu)</label>
+              <textarea id="c7DescUr" class="input-cms input-cms-urdu"></textarea>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================= TAB 5: WHY CHOOSE US ================= -->
+      <div id="tab-whyus" class="editor-tab-panel">
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>✨ Why Choose Our Academy</h3>
+            <p>Edit the 7 distinct academy advantages in English and Urdu.</p>
+          </div>
+
+          <!-- Feature 1 -->
+          <div class="form-grid-2" style="margin-bottom: 1.5rem;">
+            <div class="form-group-cms">
+              <label>Feature 1 Title (EN)</label>
+              <input type="text" id="w1TitleEn" class="input-cms">
+              <textarea id="w1DescEn" class="input-cms" style="margin-top:0.4rem; min-height:60px;"></textarea>
+            </div>
+            <div class="form-group-cms">
+              <label>Feature 1 Title (UR)</label>
+              <input type="text" id="w1TitleUr" class="input-cms input-cms-urdu">
+              <textarea id="w1DescUr" class="input-cms input-cms-urdu" style="margin-top:0.4rem; min-height:60px;"></textarea>
+            </div>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="form-grid-2" style="margin-bottom: 1.5rem;">
+            <div class="form-group-cms">
+              <label>Feature 2 Title (EN)</label>
+              <input type="text" id="w2TitleEn" class="input-cms">
+              <textarea id="w2DescEn" class="input-cms" style="margin-top:0.4rem; min-height:60px;"></textarea>
+            </div>
+            <div class="form-group-cms">
+              <label>Feature 2 Title (UR)</label>
+              <input type="text" id="w2TitleUr" class="input-cms input-cms-urdu">
+              <textarea id="w2DescUr" class="input-cms input-cms-urdu" style="margin-top:0.4rem; min-height:60px;"></textarea>
+            </div>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="form-grid-2" style="margin-bottom: 1.5rem;">
+            <div class="form-group-cms">
+              <label>Feature 3 Title (EN)</label>
+              <input type="text" id="w3TitleEn" class="input-cms">
+              <textarea id="w3DescEn" class="input-cms" style="margin-top:0.4rem; min-height:60px;"></textarea>
+            </div>
+            <div class="form-group-cms">
+              <label>Feature 3 Title (UR)</label>
+              <input type="text" id="w3TitleUr" class="input-cms input-cms-urdu">
+              <textarea id="w3DescUr" class="input-cms input-cms-urdu" style="margin-top:0.4rem; min-height:60px;"></textarea>
+            </div>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="form-grid-2" style="margin-bottom: 1.5rem;">
+            <div class="form-group-cms">
+              <label>Feature 4 Title (EN)</label>
+              <input type="text" id="w4TitleEn" class="input-cms">
+              <textarea id="w4DescEn" class="input-cms" style="margin-top:0.4rem; min-height:60px;"></textarea>
+            </div>
+            <div class="form-group-cms">
+              <label>Feature 4 Title (UR)</label>
+              <input type="text" id="w4TitleUr" class="input-cms input-cms-urdu">
+              <textarea id="w4DescUr" class="input-cms input-cms-urdu" style="margin-top:0.4rem; min-height:60px;"></textarea>
+            </div>
+          </div>
+
+          <!-- Feature 5 -->
+          <div class="form-grid-2" style="margin-bottom: 1.5rem;">
+            <div class="form-group-cms">
+              <label>Feature 5 Title (EN)</label>
+              <input type="text" id="w5TitleEn" class="input-cms">
+              <textarea id="w5DescEn" class="input-cms" style="margin-top:0.4rem; min-height:60px;"></textarea>
+            </div>
+            <div class="form-group-cms">
+              <label>Feature 5 Title (UR)</label>
+              <input type="text" id="w5TitleUr" class="input-cms input-cms-urdu">
+              <textarea id="w5DescUr" class="input-cms input-cms-urdu" style="margin-top:0.4rem; min-height:60px;"></textarea>
+            </div>
+          </div>
+
+          <!-- Feature 6 -->
+          <div class="form-grid-2" style="margin-bottom: 1.5rem;">
+            <div class="form-group-cms">
+              <label>Feature 6 Title (EN)</label>
+              <input type="text" id="w6TitleEn" class="input-cms">
+              <textarea id="w6DescEn" class="input-cms" style="margin-top:0.4rem; min-height:60px;"></textarea>
+            </div>
+            <div class="form-group-cms">
+              <label>Feature 6 Title (UR)</label>
+              <input type="text" id="w6TitleUr" class="input-cms input-cms-urdu">
+              <textarea id="w6DescUr" class="input-cms input-cms-urdu" style="margin-top:0.4rem; min-height:60px;"></textarea>
+            </div>
+          </div>
+
+          <!-- Feature 7 -->
+          <div class="form-grid-2" style="margin-bottom: 1.5rem;">
+            <div class="form-group-cms">
+              <label>Feature 7 Title (EN)</label>
+              <input type="text" id="w7TitleEn" class="input-cms">
+              <textarea id="w7DescEn" class="input-cms" style="margin-top:0.4rem; min-height:60px;"></textarea>
+            </div>
+            <div class="form-group-cms">
+              <label>Feature 7 Title (UR)</label>
+              <input type="text" id="w7TitleUr" class="input-cms input-cms-urdu">
+              <textarea id="w7DescUr" class="input-cms input-cms-urdu" style="margin-top:0.4rem; min-height:60px;"></textarea>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ================= TAB 6: ABOUT US ================= -->
+      <div id="tab-about" class="editor-tab-panel">
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>📖 About Us Mission Narrative</h3>
+            <p>Edit the academy story, mission statement, and Hadith quotes.</p>
+          </div>
+
+          <div class="form-group-cms">
+            <label>Paragraph 1 (English)</label>
+            <textarea id="abP1En" class="input-cms"></textarea>
+          </div>
+          <div class="form-group-cms">
+            <label>Paragraph 1 (Urdu)</label>
+            <textarea id="abP1Ur" class="input-cms input-cms-urdu"></textarea>
+          </div>
+
+          <div class="form-group-cms">
+            <label>Paragraph 2 (English)</label>
+            <textarea id="abP2En" class="input-cms"></textarea>
+          </div>
+          <div class="form-group-cms">
+            <label>Paragraph 2 (Urdu)</label>
+            <textarea id="abP2Ur" class="input-cms input-cms-urdu"></textarea>
+          </div>
+
+          <div class="form-group-cms">
+            <label>Paragraph 3 (English)</label>
+            <textarea id="abP3En" class="input-cms"></textarea>
+          </div>
+          <div class="form-group-cms">
+            <label>Paragraph 3 (Urdu)</label>
+            <textarea id="abP3Ur" class="input-cms input-cms-urdu"></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 7: SAVE & GITHUB PUSH ================= -->
+      <div id="tab-export" class="editor-tab-panel">
+        <div class="cms-card">
+          <div class="cms-card-header">
+            <h3>🚀 Save, Download &amp; Push to GitHub</h3>
+            <p>Save your updates to the live browser site, download configuration files, or push directly to GitHub.</p>
+          </div>
+
+          <!-- Action 1: Instant Browser Save -->
+          <div style="background:#F0FDF4; border:1.5px solid #A7F3D0; border-radius:12px; padding:1.5rem; margin-bottom:1.5rem;">
+            <h4 style="color:#065F46; margin:0 0 0.5rem;">1. Instant Live Site Save (فوری ویب سائٹ سیو)</h4>
+            <p style="color:#1E293B; font-size:0.92rem; margin:0 0 1rem;">
+              Click below to save all changes directly to the website storage. Every time you open or refresh the site, your changes will be active!
+            </p>
+            <button id="btnSaveInstant" class="btn btn-gold">
+              💾 Save All Changes Instantly
+            </button>
+          </div>
+
+          <!-- Action 2: Download Config Files -->
+          <div style="background:#FFF; border:1.5px solid #E2ECE6; border-radius:12px; padding:1.5rem; margin-bottom:1.5rem;">
+            <h4 style="color:var(--color-dark-purple); margin:0 0 0.5rem;">2. Download Updated Code Files</h4>
+            <p style="color:#64748B; font-size:0.92rem; margin:0 0 1rem;">
+              Download clean, updated JavaScript files to permanently replace in your repository or server.
+            </p>
+            <div style="display:flex; gap:0.75rem; flex-wrap:wrap;">
+              <button id="btnDownloadConfig" class="btn btn-outline-dark btn-sm">
+                📥 Download config.js
+              </button>
+              <button id="btnDownloadTrans" class="btn btn-outline-dark btn-sm">
+                📥 Download translations.js
+              </button>
+            </div>
+          </div>
+
+          <!-- Action 3: Direct GitHub Push via Token -->
+          <div class="github-box">
+            <h4 style="color:var(--color-dark-purple); margin:0 0 0.5rem;">3. Direct GitHub Push (براہِ راست گٹ ہب پر پش کریں)</h4>
+            <p style="color:#475569; font-size:0.92rem; margin:0 0 1rem;">
+              You can push your changes straight to <strong>Yunous7372/quranwebsite</strong> (main branch) using a free GitHub Personal Access Token (PAT).
+            </p>
+
+            <div class="form-group-cms">
+              <label for="ghToken">GitHub Personal Access Token (PAT):</label>
+              <input type="password" id="ghToken" class="input-cms" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx">
+              <span style="font-size:0.8rem; color:#64748B; margin-top:0.3rem;">
+                Don't have a token? <a href="https://github.com/settings/tokens/new?scopes=repo" target="_blank" style="color:#7C3AED; font-weight:700;">Click here to generate one (check 'repo' box)</a>. Your token is stored safely only in your browser.
+              </span>
+            </div>
+
+            <button id="btnPushToGitHub" class="btn btn-gold" style="margin-top:0.5rem;">
+              🚀 Push Changes to GitHub Live Site
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<!-- Floating Toast -->
+<div id="editorAlertToast">Changes saved successfully!</div>
+
+<!-- Scripts -->
+<script src="js/config.js"></script>
+<script src="js/translations.js"></script>
+<script src="js/editor-core.js"></script>
+
+<script>
+// Tab Switching
+document.querySelectorAll('.editor-nav-item').forEach(item => {
+  item.addEventListener('click', () => {
+    document.querySelectorAll('.editor-nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.editor-tab-panel').forEach(p => p.classList.remove('active'));
+    item.classList.add('active');
+    const tabId = item.getAttribute('data-tab');
+    const panel = document.getElementById(tabId);
+    if (panel) panel.classList.add('active');
+  });
+});
+
+// Load Current Form Values
+function populateEditorForm() {
+  // Contact
+  document.getElementById('cfgWhatsApp').value = ACADEMY_CONFIG.contact.whatsappNumber || '';
+  document.getElementById('cfgPhone').value = ACADEMY_CONFIG.contact.phoneDisplay || '';
+  document.getElementById('cfgEmail').value = ACADEMY_CONFIG.contact.email || '';
+  document.getElementById('cfgLocationEn').value = ACADEMY_CONFIG.contact.location?.en || '';
+  document.getElementById('cfgLocationUr').value = ACADEMY_CONFIG.contact.location?.ur || '';
+  document.getElementById('cfgFb').value = ACADEMY_CONFIG.social.facebook || '';
+  document.getElementById('cfgIg').value = ACADEMY_CONFIG.social.instagram || '';
+  document.getElementById('cfgYt').value = ACADEMY_CONFIG.social.youtube || '';
+  document.getElementById('cfgEndpoint').value = ACADEMY_CONFIG.formEndpoint || '';
+
+  // Hero
+  document.getElementById('heroHeadEn').value = TRANSLATIONS.en.heroHeadline || '';
+  document.getElementById('heroHeadUr').value = TRANSLATIONS.ur.heroHeadline || '';
+  document.getElementById('heroSubEn').value = TRANSLATIONS.en.heroSubtitle || '';
+  document.getElementById('heroSubUr').value = TRANSLATIONS.ur.heroSubtitle || '';
+  document.getElementById('heroBadgeEn').value = TRANSLATIONS.en.heroBadge || '';
+  document.getElementById('heroBadgeUr').value = TRANSLATIONS.ur.heroBadge || '';
+
+  // Courses 1-7
+  for (let i = 1; i <= 7; i++) {
+    const titleEn = document.getElementById(`c${i}TitleEn`);
+    const titleUr = document.getElementById(`c${i}TitleUr`);
+    const descEn = document.getElementById(`c${i}DescEn`);
+    const descUr = document.getElementById(`c${i}DescUr`);
+    if (titleEn) titleEn.value = TRANSLATIONS.en[`course${i}Title`] || '';
+    if (titleUr) titleUr.value = TRANSLATIONS.ur[`course${i}Title`] || '';
+    if (descEn) descEn.value = TRANSLATIONS.en[`course${i}Desc`] || '';
+    if (descUr) descUr.value = TRANSLATIONS.ur[`course${i}Desc`] || '';
+  }
+
+  // Why Us 1-7
+  for (let i = 1; i <= 7; i++) {
+    const tEn = document.getElementById(`w${i}TitleEn`);
+    const tUr = document.getElementById(`w${i}TitleUr`);
+    const dEn = document.getElementById(`w${i}DescEn`);
+    const dUr = document.getElementById(`w${i}DescUr`);
+    if (tEn) tEn.value = TRANSLATIONS.en[`why${i}Title`] || '';
+    if (tUr) tUr.value = TRANSLATIONS.ur[`why${i}Title`] || '';
+    if (dEn) dEn.value = TRANSLATIONS.en[`why${i}Desc`] || '';
+    if (dUr) dUr.value = TRANSLATIONS.ur[`why${i}Desc`] || '';
+  }
+
+  // About Us
+  document.getElementById('abP1En').value = TRANSLATIONS.en.aboutP1 || '';
+  document.getElementById('abP1Ur').value = TRANSLATIONS.ur.aboutP1 || '';
+  document.getElementById('abP2En').value = TRANSLATIONS.en.aboutP2 || '';
+  document.getElementById('abP2Ur').value = TRANSLATIONS.ur.aboutP2 || '';
+  document.getElementById('abP3En').value = TRANSLATIONS.en.aboutP3 || '';
+  document.getElementById('abP3Ur').value = TRANSLATIONS.ur.aboutP3 || '';
+
+  // Saved GitHub Token
+  const savedToken = localStorage.getItem(STORAGE_KEYS.GITHUB_TOKEN);
+  if (savedToken) document.getElementById('ghToken').value = savedToken;
+}
+
+// Collect values into objects
+function gatherEditorData() {
+  const newConfig = {
+    contact: {
+      whatsappNumber: document.getElementById('cfgWhatsApp').value.trim(),
+      phoneDisplay: document.getElementById('cfgPhone').value.trim(),
+      email: document.getElementById('cfgEmail').value.trim(),
+      location: {
+        en: document.getElementById('cfgLocationEn').value.trim(),
+        ur: document.getElementById('cfgLocationUr').value.trim()
+      }
+    },
+    social: {
+      facebook: document.getElementById('cfgFb').value.trim(),
+      instagram: document.getElementById('cfgIg').value.trim(),
+      youtube: document.getElementById('cfgYt').value.trim()
+    },
+    formEndpoint: document.getElementById('cfgEndpoint').value.trim()
+  };
+
+  const newTrans = {
+    en: {
+      heroHeadline: document.getElementById('heroHeadEn').value.trim(),
+      heroSubtitle: document.getElementById('heroSubEn').value.trim(),
+      heroBadge: document.getElementById('heroBadgeEn').value.trim(),
+      aboutP1: document.getElementById('abP1En').value.trim(),
+      aboutP2: document.getElementById('abP2En').value.trim(),
+      aboutP3: document.getElementById('abP3En').value.trim()
+    },
+    ur: {
+      heroHeadline: document.getElementById('heroHeadUr').value.trim(),
+      heroSubtitle: document.getElementById('heroSubUr').value.trim(),
+      heroBadge: document.getElementById('heroBadgeUr').value.trim(),
+      aboutP1: document.getElementById('abP1Ur').value.trim(),
+      aboutP2: document.getElementById('abP2Ur').value.trim(),
+      aboutP3: document.getElementById('abP3Ur').value.trim()
+    }
+  };
+
+  for (let i = 1; i <= 7; i++) {
+    newTrans.en[`course${i}Title`] = document.getElementById(`c${i}TitleEn`).value.trim();
+    newTrans.ur[`course${i}Title`] = document.getElementById(`c${i}TitleUr`).value.trim();
+    newTrans.en[`course${i}Desc`] = document.getElementById(`c${i}DescEn`).value.trim();
+    newTrans.ur[`course${i}Desc`] = document.getElementById(`c${i}DescUr`).value.trim();
+
+    newTrans.en[`why${i}Title`] = document.getElementById(`w${i}TitleEn`).value.trim();
+    newTrans.ur[`why${i}Title`] = document.getElementById(`w${i}TitleUr`).value.trim();
+    newTrans.en[`why${i}Desc`] = document.getElementById(`w${i}DescEn`).value.trim();
+    newTrans.ur[`why${i}Desc`] = document.getElementById(`w${i}DescUr`).value.trim();
+  }
+
+  return { newConfig, newTrans };
+}
+
+// Save All
+function performSave() {
+  const { newConfig, newTrans } = gatherEditorData();
+  saveAllEdits(newConfig, newTrans);
+  showEditorToast("✅ تبدیلیاں کامیابی سے محفوظ ہو گئیں! (Changes saved to website)");
+}
+
+document.getElementById('btnSaveTop').addEventListener('click', performSave);
+document.getElementById('btnSaveInstant').addEventListener('click', performSave);
+
+// Theme presets click
+document.querySelectorAll('.theme-preset-card').forEach(card => {
+  card.addEventListener('click', () => {
+    document.querySelectorAll('.theme-preset-card').forEach(c => c.classList.remove('active'));
+    card.classList.add('active');
+    const presetKey = card.getAttribute('data-preset');
+    if (COLOR_PRESETS[presetKey]) {
+      const colors = COLOR_PRESETS[presetKey].colors;
+      localStorage.setItem(STORAGE_KEYS.THEME, JSON.stringify(colors));
+      for (const [prop, val] of Object.entries(colors)) {
+        document.documentElement.style.setProperty(prop, val);
+      }
+      showEditorToast(`Theme set to ${COLOR_PRESETS[presetKey].name}!`);
+    }
+  });
+});
+
+// Reset
+document.getElementById('btnResetDefaults').addEventListener('click', () => {
+  if (confirm("Reset all edits and restore original default texts and colors?")) {
+    resetAllEdits();
+    location.reload();
+  }
+});
+
+// Toast
+function showEditorToast(msg) {
+  const toast = document.getElementById('editorAlertToast');
+  toast.textContent = msg;
+  toast.style.display = 'block';
+  setTimeout(() => { toast.style.display = 'none'; }, 4000);
+}
+
+// Download File helper
+function downloadFile(content, fileName, mimeType) {
+  const a = document.createElement('a');
+  mimeType = mimeType || 'application/octet-stream';
+  if (navigator.msSaveBlob) {
+    navigator.msSaveBlob(new Blob([content], { type: mimeType }), fileName);
+  } else if (URL && 'download' in a) {
+    a.href = URL.createObjectURL(new Blob([content], { type: mimeType }));
+    a.setAttribute('download', fileName);
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+}
+
+document.getElementById('btnDownloadConfig').addEventListener('click', () => {
+  const { newConfig } = gatherEditorData();
+  const merged = mergeDeep(JSON.parse(JSON.stringify(ACADEMY_CONFIG)), newConfig);
+  const fileContent = `/**
+ * Dar-e-Arqam Online Quran Academy
+ * Global Configuration File (Exported from Editor)
+ */
+const ACADEMY_CONFIG = ${JSON.stringify(merged, null, 2)};
+
+function getWhatsAppLink(customMessage) {
+  const number = ACADEMY_CONFIG.contact.whatsappNumber;
+  const msg = encodeURIComponent(customMessage || ACADEMY_CONFIG.contact.whatsappDefaultMessage);
+  return \`https://wa.me/\${number}?text=\${msg}\`;
+}
+`;
+  downloadFile(fileContent, 'config.js', 'application/javascript');
+  showEditorToast("📥 config.js downloaded!");
+});
+
+document.getElementById('btnDownloadTrans').addEventListener('click', () => {
+  const { newTrans } = gatherEditorData();
+  const merged = mergeDeep(JSON.parse(JSON.stringify(TRANSLATIONS)), newTrans);
+  const fileContent = `/**
+ * Bilingual Translation Dictionary
+ * Exported from Editor
+ */
+const TRANSLATIONS = ${JSON.stringify(merged, null, 2)};
+`;
+  downloadFile(fileContent, 'translations.js', 'application/javascript');
+  showEditorToast("📥 translations.js downloaded!");
+});
+
+// Direct GitHub Push via Token
+document.getElementById('btnPushToGitHub').addEventListener('click', async () => {
+  const token = document.getElementById('ghToken').value.trim();
+  if (!token) {
+    alert("Please enter your GitHub Personal Access Token to push.");
+    return;
+  }
+  localStorage.setItem(STORAGE_KEYS.GITHUB_TOKEN, token);
+
+  performSave();
+  const { newConfig, newTrans } = gatherEditorData();
+  const mergedConfig = mergeDeep(JSON.parse(JSON.stringify(ACADEMY_CONFIG)), newConfig);
+  const mergedTrans = mergeDeep(JSON.parse(JSON.stringify(TRANSLATIONS)), newTrans);
+
+  showEditorToast("⏳ Pushing changes to GitHub repository...");
+
+  const repo = "Yunous7372/quranwebsite";
+  const branch = "main";
+
+  try {
+    // Helper to update a file on GitHub
+    async function updateGitHubFile(path, contentStr, message) {
+      // 1. Get current file sha
+      const getUrl = `https://api.github.com/repos/${repo}/contents/${path}?ref=${branch}`;
+      const res = await fetch(getUrl, {
+        headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' }
+      });
+      if (!res.ok) throw new Error(`Could not fetch ${path} from GitHub`);
+      const fileData = await res.json();
+
+      // 2. Put updated file
+      const putUrl = `https://api.github.com/repos/${repo}/contents/${path}`;
+      const putRes = await fetch(putUrl, {
+        method: 'PUT',
+        headers: {
+          'Authorization': `Bearer ${token}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          message: message,
+          content: btoa(unescape(encodeURIComponent(contentStr))),
+          sha: fileData.sha,
+          branch: branch
+        })
+      });
+      if (!putRes.ok) throw new Error(`Failed to commit ${path}`);
+    }
+
+    const configCode = `const ACADEMY_CONFIG = ${JSON.stringify(mergedConfig, null, 2)};\n\nfunction getWhatsAppLink(customMessage) {\n  const number = ACADEMY_CONFIG.contact.whatsappNumber;\n  const msg = encodeURIComponent(customMessage || ACADEMY_CONFIG.contact.whatsappDefaultMessage);\n  return \`https://wa.me/\${number}?text=\${msg}\`;\n}`;
+    const transCode = `const TRANSLATIONS = ${JSON.stringify(mergedTrans, null, 2)};`;
+
+    await updateGitHubFile('js/config.js', configCode, 'Update website config via Web CMS Editor');
+    await updateGitHubFile('js/translations.js', transCode, 'Update website texts via Web CMS Editor');
+
+    showEditorToast("🚀 Mubarak! All changes pushed to GitHub successfully!");
+    alert("الحمد للہ! تمام تبدیلیاں براہِ راست آپ کے گٹ ہب پر کامیابی سے پش ہو چکی ہیں اور لائیو سائٹ پر اپڈیٹ ہو گئی ہیں۔");
+  } catch (err) {
+    console.error(err);
+    alert("GitHub Push Notice: " + err.message + "\n\nMake sure your token has 'repo' permission scope.");
+  }
+});
+
+// Initialize on Load
+document.addEventListener('DOMContentLoaded', populateEditorForm);
+</script>
+
+</body>
+</html>

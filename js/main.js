@@ -6,6 +6,9 @@
 let currentLang = localStorage.getItem('darearqam_lang') || 'en';
 
 document.addEventListener('DOMContentLoaded', () => {
+  if (typeof loadCustomEdits === 'function') {
+    loadCustomEdits();
+  }
   initLanguage();
   initConfigData();
   initNavigation();
