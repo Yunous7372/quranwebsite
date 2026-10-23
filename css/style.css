@@ -1,52 +1,53 @@
 /* ===================================================================
    DAR-E-ARQAM ONLINE QURAN ACADEMY - MAIN STYLESHEET
-   Refined Royal Islamic Palette: Emerald Green, Pure White & Radiant Gold
+   Royal Islamic Purple & Radiant Gold Palette
    =================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel:wght@600;700;800&family=Noto+Nastaliq+Urdu:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
   /* ===================================================================
-     ROYAL ISLAMIC COLOR PALETTE - VIBRANT, LUXURIOUS & SPIRITUAL
+     ROYAL PURPLE & RADIANT GOLD ISLAMIC COLOR PALETTE
      =================================================================== */
-  --color-primary-dark: #022C22;    /* Majestic Deep Midnight Emerald */
-  --color-dark-green: #064E3B;      /* Royal Islamic Forest Emerald */
-  --color-emerald: #059669;         /* Vibrant Luminous Emerald Green */
-  --color-emerald-light: #10B981;   /* Fresh Inspiring Mint/Emerald */
-  --color-emerald-soft: #ECFDF5;    /* Soft Clean Islamic Mint Glow */
-  --color-emerald-border: #A7F3D0;  /* Crisp Emerald Border Tint */
+  --color-primary-dark: #1E1035;    /* Deep Imperial Midnight Purple */
+  --color-dark-purple: #2E1065;     /* Majestic Islamic Royal Purple */
+  --color-dark-green: #2E1065;      /* Primary Heading Color (Royal Purple) */
+  --color-emerald: #7C3AED;         /* Luminous Royal Violet */
+  --color-emerald-light: #8B5CF6;   /* Electric Soft Violet */
+  --color-emerald-soft: #F5F3FF;    /* Clean Lavender Light Tint */
+  --color-emerald-border: #DDD6FE;  /* Lavender Border Tint */
   
   --color-gold: #F59E0B;            /* Radiant Arabic Warm Gold */
-  --color-gold-light: #FEF3C7;      /* Luminous Champagne Gold Glow */
-  --color-gold-hover: #D97706;      /* Rich Deep Gold on Hover */
-  --color-gold-dark: #B45309;       /* Deep Antique Gold for Typography */
+  --color-gold-light: #FEF3C7;      /* Champagne Gold Glow */
+  --color-gold-hover: #D97706;      /* Rich Amber Gold on Hover */
+  --color-gold-dark: #B45309;       /* Deep Antique Gold */
   --color-gold-bright: #FBBF24;     /* Shimmering Sun Gold */
   
-  --color-bg-light: #F8FAF9;        /* Ultra-Clean Fresh Islamic White with delicate mint freshness */
-  --color-bg-alt: #F0FDF4;          /* Soft Pristine Mint Tint for alternating sections */
-  --color-card-bg: #FFFFFF;         /* Pure Brilliant White for maximum contrast & crispness */
-  --color-border: #E2ECE6;          /* Crisp clean border */
+  --color-bg-light: #FAF8FF;        /* Ultra-Clean Lavender-White Background */
+  --color-bg-alt: #F5F3FF;          /* Soft Lilac Tint for Alternating Sections */
+  --color-card-bg: #FFFFFF;         /* Pure Brilliant White */
+  --color-border: #E9E5F5;          /* Crisp Subtle Border */
   --color-border-gold: rgba(245, 158, 11, 0.45);
   
-  --color-text-main: #0F172A;       /* High-contrast rich slate text for supreme readability */
+  --color-text-main: #0F172A;       /* High-contrast slate for supreme readability */
   --color-text-muted: #475569;      /* Elegant readable slate-muted */
   --color-text-light: #F8FAFC;
   --color-text-gold: #D97706;
 
   /* Gradients */
-  --grad-hero: linear-gradient(140deg, #012B1E 0%, #064E3B 45%, #047857 100%);
-  --grad-hero-glow: radial-gradient(circle at 70% 40%, rgba(16, 185, 129, 0.25) 0%, transparent 60%);
+  --grad-hero: linear-gradient(140deg, #15082A 0%, #2E1065 45%, #4C1D95 100%);
+  --grad-hero-glow: radial-gradient(circle at 70% 40%, rgba(139, 92, 246, 0.28) 0%, rgba(245, 158, 11, 0.15) 45%, transparent 70%);
   --grad-gold: linear-gradient(135deg, #FEF3C7 0%, #FBBF24 35%, #F59E0B 70%, #D97706 100%);
   --grad-gold-btn: linear-gradient(135deg, #FDE68A 0%, #F59E0B 50%, #D97706 100%);
-  --grad-emerald: linear-gradient(135deg, #059669 0%, #064E3B 100%);
-  --grad-emerald-soft: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+  --grad-purple: linear-gradient(135deg, #7C3AED 0%, #2E1065 100%);
+  --grad-purple-soft: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);
 
   /* Shadows */
-  --shadow-sm: 0 2px 6px rgba(6, 78, 59, 0.04);
-  --shadow-md: 0 6px 18px rgba(6, 78, 59, 0.08);
-  --shadow-lg: 0 16px 36px rgba(2, 44, 34, 0.12);
+  --shadow-sm: 0 2px 6px rgba(46, 16, 101, 0.04);
+  --shadow-md: 0 6px 18px rgba(46, 16, 101, 0.08);
+  --shadow-lg: 0 16px 36px rgba(30, 16, 53, 0.14);
   --shadow-gold: 0 8px 25px rgba(245, 158, 11, 0.35);
-  --shadow-card: 0 10px 30px -4px rgba(6, 78, 59, 0.07), 0 4px 10px -2px rgba(6, 78, 59, 0.03);
+  --shadow-card: 0 10px 30px -4px rgba(46, 16, 101, 0.07), 0 4px 10px -2px rgba(46, 16, 101, 0.03);
 
   /* Fonts */
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -89,7 +90,7 @@ body {
 
 /* Typography Helpers */
 h1, h2, h3, h4, h5, h6 {
-  color: var(--color-dark-green);
+  color: var(--color-dark-purple);
   font-weight: 700;
   line-height: 1.25;
 }
@@ -118,7 +119,7 @@ img, svg {
   gap: 0.5rem;
   background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
   color: #92400E;
-  border: 1px solid rgba(245, 158, 11, 0.4);
+  border: 1px solid rgba(245, 158, 11, 0.45);
   padding: 0.4rem 1.15rem;
   border-radius: 50px;
   font-size: 0.85rem;
@@ -191,7 +192,7 @@ img, svg {
 
 .btn-gold {
   background: var(--grad-gold-btn);
-  color: #022C22;
+  color: #1E1035;
   font-weight: 800;
   box-shadow: var(--shadow-gold);
 }
@@ -225,22 +226,22 @@ img, svg {
 
 .btn-outline-gold:hover {
   background: var(--grad-gold-btn);
-  color: #022C22;
+  color: #1E1035;
   border-color: transparent;
 }
 
 .btn-outline-dark {
   background: #FFFFFF;
   border: 1.5px solid var(--color-emerald);
-  color: var(--color-dark-green);
+  color: var(--color-dark-purple);
   font-weight: 700;
 }
 
 .btn-outline-dark:hover {
-  background: var(--color-dark-green);
+  background: var(--color-dark-purple);
   color: #FFFFFF;
-  border-color: var(--color-dark-green);
-  box-shadow: 0 4px 14px rgba(6, 78, 59, 0.2);
+  border-color: var(--color-dark-purple);
+  box-shadow: 0 4px 14px rgba(46, 16, 101, 0.25);
 }
 
 .btn-sm {
@@ -252,7 +253,7 @@ img, svg {
    TOP ANNOUNCEMENT BAR
    =================================================================== */
 .top-bar {
-  background-color: #012419;
+  background-color: #130626;
   color: #FEF3C7;
   font-size: 0.85rem;
   padding: 0.55rem 0;
@@ -313,7 +314,7 @@ img, svg {
 
 .lang-toggle-btn:hover {
   background: var(--color-gold);
-  color: #022C22;
+  color: #1E1035;
 }
 
 /* ===================================================================
@@ -323,17 +324,17 @@ img, svg {
   position: sticky;
   top: 0;
   z-index: 999;
-  background: rgba(4, 57, 39, 0.96);
+  background: rgba(46, 16, 101, 0.96);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 2.5px solid var(--color-gold);
-  box-shadow: 0 4px 20px rgba(1, 37, 26, 0.2);
+  box-shadow: 0 4px 20px rgba(19, 6, 38, 0.25);
   transition: var(--transition-smooth);
 }
 
 .main-nav.scrolled {
-  background: rgba(2, 44, 34, 0.98);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+  background: rgba(21, 8, 42, 0.98);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35);
 }
 
 .nav-container {
@@ -454,7 +455,7 @@ img, svg {
   right: -100%;
   width: 310px;
   height: 100vh;
-  background: #022C22;
+  background: #1E1035;
   z-index: 1001;
   padding: 2.5rem 2rem;
   box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
@@ -534,9 +535,9 @@ img, svg {
   position: absolute;
   top: -15%;
   right: 15%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.22) 0%, rgba(245, 158, 11, 0.1) 45%, transparent 70%);
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, rgba(245, 158, 11, 0.12) 45%, transparent 70%);
   pointer-events: none;
   z-index: 1;
 }
@@ -573,7 +574,7 @@ img, svg {
 .bismillah-hero-wrap {
   max-width: 380px;
   margin-bottom: 0.5rem;
-  filter: drop-shadow(0 4px 12px rgba(245, 158, 11, 0.4));
+  filter: drop-shadow(0 4px 14px rgba(245, 158, 11, 0.45));
 }
 
 .hero-tag {
@@ -597,7 +598,7 @@ img, svg {
   font-size: 3.15rem;
   color: #FFFFFF;
   line-height: 1.22;
-  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.4);
+  text-shadow: 0 3px 12px rgba(0, 0, 0, 0.45);
 }
 
 .hero-title span {
@@ -703,7 +704,7 @@ img, svg {
 .course-card {
   background: var(--color-card-bg);
   border-radius: 18px;
-  border: 1.5px solid #E2ECE6;
+  border: 1.5px solid #E9E5F5;
   box-shadow: var(--shadow-card);
   padding: 2.35rem;
   display: flex;
@@ -728,7 +729,7 @@ img, svg {
 
 .course-card:hover {
   transform: translateY(-8px);
-  box-shadow: 0 20px 40px rgba(6, 78, 59, 0.12);
+  box-shadow: 0 20px 40px rgba(46, 16, 101, 0.12);
   border-color: rgba(245, 158, 11, 0.6);
 }
 
@@ -750,10 +751,10 @@ img, svg {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
-  border: 1.5px solid #A7F3D0;
+  background: linear-gradient(135deg, #F5F3FF 0%, #EDE9FE 100%);
+  border: 1.5px solid #DDD6FE;
   padding: 8px;
-  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
 }
 
 .course-badge {
@@ -762,14 +763,14 @@ img, svg {
   text-transform: uppercase;
   padding: 0.35rem 0.85rem;
   border-radius: 50px;
-  background: #ECFDF5;
-  color: #047857;
-  border: 1px solid #A7F3D0;
+  background: #F5F3FF;
+  color: #6D28D9;
+  border: 1px solid #DDD6FE;
 }
 
 .course-title {
   font-size: 1.45rem;
-  color: var(--color-primary-dark);
+  color: var(--color-dark-purple);
   margin-bottom: 0.75rem;
   font-weight: 700;
 }
@@ -819,7 +820,7 @@ img, svg {
    =================================================================== */
 .why-us-section {
   padding: 6.5rem 0;
-  background: linear-gradient(180deg, #01281C 0%, #033C29 100%);
+  background: linear-gradient(180deg, #15082A 0%, #2E1065 100%);
   color: #FFFFFF;
   position: relative;
   overflow: hidden;
@@ -930,8 +931,8 @@ img, svg {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  background: #F8FAF9;
-  border: 1px solid #E2ECE6;
+  background: #FAF8FF;
+  border: 1px solid #E9E5F5;
   border-left: 4px solid var(--color-gold);
   padding: 1.25rem 1.45rem;
   border-radius: 10px;
@@ -939,7 +940,7 @@ img, svg {
 
 .value-item h4 {
   font-size: 1.08rem;
-  color: var(--color-dark-green);
+  color: var(--color-dark-purple);
   margin-bottom: 0.25rem;
 }
 
@@ -962,7 +963,7 @@ img, svg {
   border: 2px solid var(--color-gold);
   border-radius: 24px;
   padding: 3.25rem 2.75rem;
-  box-shadow: 0 20px 45px rgba(2, 44, 34, 0.3);
+  box-shadow: 0 20px 45px rgba(30, 16, 53, 0.35);
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -1002,7 +1003,7 @@ img, svg {
    =================================================================== */
 .trial-section {
   padding: 6.5rem 0;
-  background: linear-gradient(145deg, #022C22 0%, #064E3B 55%, #047857 100%);
+  background: linear-gradient(145deg, #1E1035 0%, #3B1266 55%, #4C1D95 100%);
   color: #FFFFFF;
   position: relative;
 }
@@ -1019,7 +1020,7 @@ img, svg {
 }
 
 .trial-header-banner {
-  background: linear-gradient(135deg, #012B1E 0%, #064E3B 100%);
+  background: linear-gradient(135deg, #15082A 0%, #2E1065 100%);
   color: #FFFFFF;
   padding: 2.75rem 2.5rem 2.25rem;
   text-align: center;
@@ -1061,7 +1062,7 @@ img, svg {
 .form-label {
   font-size: 0.94rem;
   font-weight: 700;
-  color: var(--color-dark-green);
+  color: var(--color-dark-purple);
 }
 
 .form-control {
@@ -1072,7 +1073,7 @@ img, svg {
   font-family: inherit;
   font-size: 0.96rem;
   color: var(--color-text-main);
-  background-color: #F8FAF9;
+  background-color: #FAF8FF;
   transition: var(--transition-smooth);
 }
 
@@ -1080,7 +1081,7 @@ img, svg {
   outline: none;
   border-color: var(--color-emerald);
   background-color: #FFFFFF;
-  box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.2);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.2);
 }
 
 select.form-control {
@@ -1138,7 +1139,7 @@ textarea.form-control {
 
 .contact-info-card {
   background: #FFFFFF;
-  border: 1.5px solid #E2ECE6;
+  border: 1.5px solid #E9E5F5;
   border-radius: 16px;
   padding: 1.75rem;
   display: flex;
@@ -1151,16 +1152,16 @@ textarea.form-control {
 .contact-info-card:hover {
   transform: translateY(-4px);
   border-color: rgba(245, 158, 11, 0.6);
-  box-shadow: 0 14px 30px rgba(6, 78, 59, 0.1);
+  box-shadow: 0 14px 30px rgba(46, 16, 101, 0.1);
 }
 
 .contact-card-icon {
   width: 54px;
   height: 54px;
   border-radius: 14px;
-  background: #ECFDF5;
-  color: #059669;
-  border: 1.5px solid #A7F3D0;
+  background: #F5F3FF;
+  color: #7C3AED;
+  border: 1.5px solid #DDD6FE;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1175,7 +1176,7 @@ textarea.form-control {
 
 .contact-card-content h4 {
   font-size: 1.15rem;
-  color: var(--color-dark-green);
+  color: var(--color-dark-purple);
   margin-bottom: 0.3rem;
 }
 
@@ -1194,7 +1195,7 @@ textarea.form-control {
 .contact-form-panel {
   background: #FFFFFF;
   border-radius: 18px;
-  border: 1.5px solid #E2ECE6;
+  border: 1.5px solid #E9E5F5;
   padding: 2.85rem;
   box-shadow: var(--shadow-card);
 }
@@ -1202,7 +1203,7 @@ textarea.form-control {
 .contact-form-panel h3 {
   font-size: 1.65rem;
   margin-bottom: 1.75rem;
-  color: var(--color-dark-green);
+  color: var(--color-dark-purple);
 }
 
 /* ===================================================================
@@ -1214,7 +1215,7 @@ textarea.form-control {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(2, 44, 34, 0.8);
+  background: rgba(21, 8, 42, 0.85);
   backdrop-filter: blur(8px);
   z-index: 2000;
   display: none;
@@ -1235,7 +1236,7 @@ textarea.form-control {
   width: 100%;
   padding: 2.85rem 2.25rem;
   text-align: center;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
   position: relative;
   animation: modalScaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -1245,9 +1246,9 @@ textarea.form-control {
   height: 76px;
   margin: 0 auto 1.5rem;
   border-radius: 50%;
-  background: #ECFDF5;
-  color: #059669;
-  border: 2px solid #A7F3D0;
+  background: #F5F3FF;
+  color: #7C3AED;
+  border: 2px solid #DDD6FE;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1256,7 +1257,7 @@ textarea.form-control {
 .modal-title {
   font-family: var(--font-serif);
   font-size: 1.75rem;
-  color: var(--color-dark-green);
+  color: var(--color-dark-purple);
   margin-bottom: 0.85rem;
 }
 
@@ -1335,7 +1336,7 @@ textarea.form-control {
    FOOTER
    =================================================================== */
 .site-footer {
-  background: #012318;
+  background: #120724;
   color: #CBD5E1;
   border-top: 3.5px solid var(--color-gold);
   padding: 5.5rem 0 2.25rem;
@@ -1377,7 +1378,7 @@ textarea.form-control {
 
 .social-link-btn:hover {
   background: var(--color-gold);
-  color: #012318;
+  color: #120724;
   border-color: var(--color-gold);
 }
 
@@ -1466,7 +1467,7 @@ textarea.form-control {
 .admin-card {
   background: #FFFFFF;
   border-radius: 18px;
-  border: 1.5px solid #E2ECE6;
+  border: 1.5px solid #E9E5F5;
   box-shadow: var(--shadow-card);
   padding: 2.5rem;
   margin-top: 2rem;
@@ -1486,7 +1487,7 @@ textarea.form-control {
 }
 
 .inquiry-table th {
-  background: #064E3B;
+  background: #2E1065;
   color: var(--color-gold-light);
   padding: 0.95rem 1rem;
   font-weight: 700;
@@ -1500,7 +1501,7 @@ textarea.form-control {
 }
 
 .inquiry-table tr:hover {
-  background-color: #F0FDF4;
+  background-color: #F5F3FF;
 }
 
 /* ===================================================================

@@ -5,9 +5,9 @@
       <stop offset="100%" stop-color="#F59E0B"/>
     </linearGradient>
   </defs>
-  <circle cx="40" cy="40" r="38" fill="#064E3B" stroke="url(#goldHifz)" stroke-width="2"/>
+  <circle cx="40" cy="40" r="38" fill="#2E1065" stroke="url(#goldHifz)" stroke-width="2"/>
   <!-- Crown of Memorizer (Taj-ul-Waqar) on top -->
-  <path d="M 28 32 L 32 24 L 40 28 L 48 24 L 52 32 Z" fill="#059669" stroke="url(#goldHifz)" stroke-width="1.5"/>
+  <path d="M 28 32 L 32 24 L 40 28 L 48 24 L 52 32 Z" fill="#7C3AED" stroke="url(#goldHifz)" stroke-width="1.5"/>
   <circle cx="32" cy="23" r="1.8" fill="url(#goldHifz)"/>
   <circle cx="40" cy="27" r="2" fill="url(#goldHifz)"/>
   <circle cx="48" cy="23" r="1.8" fill="url(#goldHifz)"/>

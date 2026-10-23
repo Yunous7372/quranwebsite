@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <!-- Progress updates clipboard / rising chart -->
-  <rect x="10" y="8" width="28" height="34" rx="3" fill="#064E3B" stroke="#F59E0B" />
+  <rect x="10" y="8" width="28" height="34" rx="3" fill="#2E1065" stroke="#F59E0B" />
   <path d="M18 6 L30 6 L30 10 L18 10 Z" fill="#F59E0B" />
   <!-- Progress Bars / Checklist -->
   <polyline points="16,24 20,28 32,18" stroke="#FDE68A" stroke-width="2" />

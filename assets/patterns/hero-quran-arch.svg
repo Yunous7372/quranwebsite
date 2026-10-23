@@ -9,15 +9,15 @@
     </linearGradient>
 
     <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#047857" />
-      <stop offset="50%" stop-color="#065F46" />
-      <stop offset="100%" stop-color="#022C22" />
+      <stop offset="0%" stop-color="#7C3AED" />
+      <stop offset="50%" stop-color="#4C1D95" />
+      <stop offset="100%" stop-color="#1E1035" />
     </linearGradient>
 
     <radialGradient id="holyGlow" cx="50%" cy="55%" r="50%">
-      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.5" />
-      <stop offset="40%" stop-color="#10B981" stop-opacity="0.35" />
-      <stop offset="80%" stop-color="#022C22" stop-opacity="0" />
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.55" />
+      <stop offset="40%" stop-color="#8B5CF6" stop-opacity="0.35" />
+      <stop offset="80%" stop-color="#1E1035" stop-opacity="0" />
     </radialGradient>
 
     <linearGradient id="pageGradLeft" x1="0%" y1="0%" x2="100%" y2="0%">
@@ -135,9 +135,9 @@
 
   <!-- OPEN HOLY QURAN -->
   <g id="open-quran" transform="translate(0, 30)" filter="url(#goldDropShadow)">
-    <!-- Book Cover Silhouette (Leather Dark Emerald & Gold Trim) -->
-    <path d="M 155 385 C 220 375, 275 390, 298 405 L 298 412 C 275 397, 220 382, 155 392 Z" fill="#0A3327" stroke="url(#goldGrad)" stroke-width="1.5" />
-    <path d="M 445 385 C 380 375, 325 390, 302 405 L 302 412 C 325 397, 380 382, 445 392 Z" fill="#0A3327" stroke="url(#goldGrad)" stroke-width="1.5" />
+    <!-- Book Cover Silhouette (Leather Royal Purple & Gold Trim) -->
+    <path d="M 155 385 C 220 375, 275 390, 298 405 L 298 412 C 275 397, 220 382, 155 392 Z" fill="#2E1065" stroke="url(#goldGrad)" stroke-width="1.5" />
+    <path d="M 445 385 C 380 375, 325 390, 302 405 L 302 412 C 325 397, 380 382, 445 392 Z" fill="#2E1065" stroke="url(#goldGrad)" stroke-width="1.5" />
 
     <!-- Left Open Page Stack (Thickness effect) -->
     <path d="M 160 380 C 225 370, 280 385, 298 398 L 298 403 C 280 390, 225 375, 160 385 Z" fill="#C5BCA5" />

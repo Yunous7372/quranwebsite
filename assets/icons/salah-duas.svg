@@ -5,12 +5,12 @@
       <stop offset="100%" stop-color="#F59E0B"/>
     </linearGradient>
   </defs>
-  <circle cx="40" cy="40" r="38" fill="#064E3B" stroke="url(#goldDuas)" stroke-width="2"/>
+  <circle cx="40" cy="40" r="38" fill="#2E1065" stroke="url(#goldDuas)" stroke-width="2"/>
   <!-- Two Hands Raised in Supplication (Dua) -->
   <!-- Left Hand -->
-  <path d="M 25 58 C 22 52, 23 42, 26 36 C 27 34, 30 34, 31 37 L 33 44 C 34 38, 36 32, 38 31 C 39 31, 40 33, 40 36 L 39 56 Z" fill="#059669" stroke="url(#goldDuas)" stroke-width="1.2"/>
+  <path d="M 25 58 C 22 52, 23 42, 26 36 C 27 34, 30 34, 31 37 L 33 44 C 34 38, 36 32, 38 31 C 39 31, 40 33, 40 36 L 39 56 Z" fill="#7C3AED" stroke="url(#goldDuas)" stroke-width="1.2"/>
   <!-- Right Hand -->
-  <path d="M 55 58 C 58 52, 57 42, 54 36 C 53 34, 50 34, 49 37 L 47 44 C 46 38, 44 32, 42 31 C 41 31, 40 33, 40 36 L 41 56 Z" fill="#059669" stroke="url(#goldDuas)" stroke-width="1.2"/>
+  <path d="M 55 58 C 58 52, 57 42, 54 36 C 53 34, 50 34, 49 37 L 47 44 C 46 38, 44 32, 42 31 C 41 31, 40 33, 40 36 L 41 56 Z" fill="#7C3AED" stroke="url(#goldDuas)" stroke-width="1.2"/>
   <!-- Light / Star radiating from above hands -->
   <g fill="url(#goldDuas)">
     <circle cx="40" cy="20" r="3"/>
