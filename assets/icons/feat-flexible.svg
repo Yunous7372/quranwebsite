@@ -1,7 +1,7 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="#F59E0B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
   <!-- 24/7 Clock with flexible circular arrows -->
-  <circle cx="24" cy="24" r="18" fill="#0B2B26" stroke="#D4AF37" />
+  <circle cx="24" cy="24" r="18" fill="#064E3B" stroke="#F59E0B" />
   <polyline points="24,14 24,24 30,28" stroke="#FDE68A" stroke-width="2.5" />
-  <path d="M 38 12 A 20 20 0 0 1 42 22 L 44 20" stroke="#D4AF37" />
-  <path d="M 10 36 A 20 20 0 0 1 6 26 L 4 28" stroke="#D4AF37" />
+  <path d="M 38 12 A 20 20 0 0 1 42 22 L 44 20" stroke="#F59E0B" />
+  <path d="M 10 36 A 20 20 0 0 1 6 26 L 4 28" stroke="#F59E0B" />
 </svg>

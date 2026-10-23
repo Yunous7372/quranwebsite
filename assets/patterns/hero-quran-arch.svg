@@ -2,34 +2,34 @@
   <defs>
     <!-- Gradients -->
     <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FBF0B9" />
-      <stop offset="35%" stop-color="#D4AF37" />
-      <stop offset="70%" stop-color="#AA771C" />
-      <stop offset="100%" stop-color="#FBF0B9" />
+      <stop offset="0%" stop-color="#FEF3C7" />
+      <stop offset="30%" stop-color="#FBBF24" />
+      <stop offset="70%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
     </linearGradient>
 
     <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0F4C3A" />
-      <stop offset="50%" stop-color="#165B4C" />
-      <stop offset="100%" stop-color="#07231B" />
+      <stop offset="0%" stop-color="#047857" />
+      <stop offset="50%" stop-color="#065F46" />
+      <stop offset="100%" stop-color="#022C22" />
     </linearGradient>
 
     <radialGradient id="holyGlow" cx="50%" cy="55%" r="50%">
-      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.45" />
-      <stop offset="40%" stop-color="#165B4C" stop-opacity="0.3" />
-      <stop offset="80%" stop-color="#051F1A" stop-opacity="0" />
+      <stop offset="0%" stop-color="#F59E0B" stop-opacity="0.5" />
+      <stop offset="40%" stop-color="#10B981" stop-opacity="0.35" />
+      <stop offset="80%" stop-color="#022C22" stop-opacity="0" />
     </radialGradient>
 
     <linearGradient id="pageGradLeft" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#F9F6EE" />
-      <stop offset="85%" stop-color="#EFE8D3" />
-      <stop offset="100%" stop-color="#D5CBB3" />
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="85%" stop-color="#FEF9C3" />
+      <stop offset="100%" stop-color="#FDE68A" />
     </linearGradient>
 
     <linearGradient id="pageGradRight" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#D5CBB3" />
-      <stop offset="15%" stop-color="#EFE8D3" />
-      <stop offset="100%" stop-color="#F9F6EE" />
+      <stop offset="0%" stop-color="#FDE68A" />
+      <stop offset="15%" stop-color="#FEF9C3" />
+      <stop offset="100%" stop-color="#FFFFFF" />
     </linearGradient>
 
     <linearGradient id="rehalWood" x1="0%" y1="0%" x2="100%" y2="100%">
