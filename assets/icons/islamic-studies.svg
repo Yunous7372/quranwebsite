@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <linearGradient id="goldStudies" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+  </defs>
+  <circle cx="40" cy="40" r="38" fill="#0B2B26" stroke="url(#goldStudies)" stroke-width="2"/>
+  <!-- Mosque Dome and Minaret Silhouette with Open Scroll / Book -->
+  <!-- Mosque Dome -->
+  <path d="M 32 46 C 32 35, 40 26, 48 24 C 56 26, 64 35, 64 46 Z" fill="#165B4C" stroke="url(#goldStudies)" stroke-width="1.2"/>
+  <circle cx="48" cy="22" r="2" fill="url(#goldStudies)"/>
+  <!-- Minaret on Left -->
+  <path d="M 20 46 L 28 46 L 28 22 C 28 20, 24 16, 24 16 C 24 16, 20 20, 20 22 Z" fill="#0F4C3A" stroke="url(#goldStudies)" stroke-width="1.2"/>
+  <rect x="22" y="26" width="4" height="4" fill="url(#goldStudies)"/>
+  <!-- Base Foundation Book / Pillars -->
+  <path d="M 16 54 L 64 54 L 64 64 C 52 61, 28 61, 16 64 Z" fill="#0A221C" stroke="url(#goldStudies)" stroke-width="1.5"/>
+  <line x1="28" y1="54" x2="28" y2="62" stroke="url(#goldStudies)" stroke-width="1"/>
+  <line x1="40" y1="54" x2="40" y2="62" stroke="url(#goldStudies)" stroke-width="1"/>
+  <line x1="52" y1="54" x2="52" y2="62" stroke="url(#goldStudies)" stroke-width="1"/>
+</svg>

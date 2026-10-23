@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <linearGradient id="goldHifz" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+  </defs>
+  <circle cx="40" cy="40" r="38" fill="#0B2B26" stroke="url(#goldHifz)" stroke-width="2"/>
+  <!-- Crown of Memorizer (Taj-ul-Waqar) on top -->
+  <path d="M 28 32 L 32 24 L 40 28 L 48 24 L 52 32 Z" fill="#165B4C" stroke="url(#goldHifz)" stroke-width="1.5"/>
+  <circle cx="32" cy="23" r="1.8" fill="url(#goldHifz)"/>
+  <circle cx="40" cy="27" r="2" fill="url(#goldHifz)"/>
+  <circle cx="48" cy="23" r="1.8" fill="url(#goldHifz)"/>
+  <!-- Open Book of Quran -->
+  <path d="M 24 54 C 30 51, 36 53, 40 56 C 44 53, 50 51, 56 54 L 56 40 C 50 37, 44 39, 40 42 C 36 39, 30 37, 24 40 Z" fill="#FDFBF7" stroke="url(#goldHifz)" stroke-width="1.2"/>
+  <!-- Heart Silhouette within Quran (memorizing by heart) -->
+  <path d="M 40 46 C 38 43, 34 43, 34 46 C 34 49, 40 53, 40 53 C 40 53, 46 49, 46 46 C 46 43, 42 43, 40 46 Z" fill="url(#goldHifz)" opacity="0.9"/>
+  <!-- Rehal Base -->
+  <path d="M 30 56 L 50 66 M 50 56 L 30 66" stroke="url(#goldHifz)" stroke-width="2" stroke-linecap="round"/>
+</svg>

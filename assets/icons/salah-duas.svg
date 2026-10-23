@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <linearGradient id="goldDuas" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+  </defs>
+  <circle cx="40" cy="40" r="38" fill="#0B2B26" stroke="url(#goldDuas)" stroke-width="2"/>
+  <!-- Two Hands Raised in Supplication (Dua) -->
+  <!-- Left Hand -->
+  <path d="M 25 58 C 22 52, 23 42, 26 36 C 27 34, 30 34, 31 37 L 33 44 C 34 38, 36 32, 38 31 C 39 31, 40 33, 40 36 L 39 56 Z" fill="#165B4C" stroke="url(#goldDuas)" stroke-width="1.2"/>
+  <!-- Right Hand -->
+  <path d="M 55 58 C 58 52, 57 42, 54 36 C 53 34, 50 34, 49 37 L 47 44 C 46 38, 44 32, 42 31 C 41 31, 40 33, 40 36 L 41 56 Z" fill="#165B4C" stroke="url(#goldDuas)" stroke-width="1.2"/>
+  <!-- Light / Star radiating from above hands -->
+  <g fill="url(#goldDuas)">
+    <circle cx="40" cy="20" r="3"/>
+    <line x1="40" y1="14" x2="40" y2="10" stroke="url(#goldDuas)" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="40" y1="26" x2="40" y2="28" stroke="url(#goldDuas)" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="34" y1="20" x2="30" y2="20" stroke="url(#goldDuas)" stroke-width="1.5" stroke-linecap="round"/>
+    <line x1="46" y1="20" x2="50" y2="20" stroke="url(#goldDuas)" stroke-width="1.5" stroke-linecap="round"/>
+  </g>
+  <!-- Prayer Mat base curve -->
+  <path d="M 20 64 C 30 61, 50 61, 60 64" fill="none" stroke="url(#goldDuas)" stroke-width="2" stroke-linecap="round"/>
+</svg>

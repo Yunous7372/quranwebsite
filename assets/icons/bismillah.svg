@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 130" width="100%" height="auto">
+  <defs>
+    <linearGradient id="bismillahGold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FBF0B9" />
+      <stop offset="45%" stop-color="#D4AF37" />
+      <stop offset="85%" stop-color="#AA771C" />
+      <stop offset="100%" stop-color="#FDE68A" />
+    </linearGradient>
+  </defs>
+  <!-- Stylized Bismillah Calligraphic Silhouette -->
+  <g fill="url(#bismillahGold)" stroke="none">
+    <path d="M 50 75 Q 80 40 120 70 Q 150 95 180 50 Q 210 20 240 60 Q 280 100 320 40 Q 360 10 400 65 Q 430 85 460 70 L 458 75 Q 425 90 395 70 Q 360 20 320 48 Q 280 108 238 68 Q 210 28 178 58 Q 148 102 118 78 Q 80 48 50 80 Z" opacity="0.3" />
+    <!-- Arabic Calligraphy text element for crisp typography rendering -->
+    <text x="250" y="85" font-family="'Amiri', 'Traditional Arabic', 'Scheherazade New', 'Noto Naskh Arabic', serif" font-size="52" font-weight="bold" text-anchor="middle" fill="url(#bismillahGold)" letter-spacing="2">
+      بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+    </text>
+  </g>
+  <!-- Decorative flanking flourishes -->
+  <g stroke="url(#bismillahGold)" stroke-width="1.5" fill="none">
+    <path d="M 30 75 Q 40 65 50 75" />
+    <path d="M 450 75 Q 460 65 470 75" />
+    <circle cx="25" cy="75" r="2.5" fill="url(#bismillahGold)" />
+    <circle cx="475" cy="75" r="2.5" fill="url(#bismillahGold)" />
+  </g>
+</svg>

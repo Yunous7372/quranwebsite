@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <linearGradient id="goldReading" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+  </defs>
+  <circle cx="40" cy="40" r="38" fill="#0B2B26" stroke="url(#goldReading)" stroke-width="2"/>
+  <!-- Open Holy Quran on Rehal -->
+  <!-- Left Page -->
+  <path d="M 18 46 C 26 43, 34 45, 39 49 L 39 30 C 34 26, 26 24, 18 27 Z" fill="#FBF0B9" stroke="url(#goldReading)" stroke-width="1.2"/>
+  <!-- Right Page -->
+  <path d="M 62 46 C 54 43, 46 45, 41 49 L 41 30 C 46 26, 54 24, 62 27 Z" fill="#FBF0B9" stroke="url(#goldReading)" stroke-width="1.2"/>
+  <!-- Text Lines on Pages -->
+  <line x1="22" y1="32" x2="35" y2="34" stroke="#0B2B26" stroke-width="1" stroke-linecap="round"/>
+  <line x1="22" y1="37" x2="35" y2="39" stroke="#0B2B26" stroke-width="1" stroke-linecap="round"/>
+  <line x1="22" y1="42" x2="35" y2="44" stroke="#0B2B26" stroke-width="1" stroke-linecap="round"/>
+  
+  <line x1="45" y1="34" x2="58" y2="32" stroke="#0B2B26" stroke-width="1" stroke-linecap="round"/>
+  <line x1="45" y1="39" x2="58" y2="37" stroke="#0B2B26" stroke-width="1" stroke-linecap="round"/>
+  <line x1="45" y1="44" x2="58" y2="42" stroke="#0B2B26" stroke-width="1" stroke-linecap="round"/>
+
+  <!-- Stand Rehal -->
+  <path d="M 27 50 L 53 66 M 53 50 L 27 66" stroke="url(#goldReading)" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

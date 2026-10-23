@@ -1,0 +1,132 @@
+/* ===================================================================
+   DAR-E-ARQAM ONLINE QURAN ACADEMY - RTL & URDU STYLESHEET
+   Supports full right-to-left orientation and beautiful Nastaliq font
+   =================================================================== */
+
+html[dir="rtl"],
+body.rtl {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Noto Nastaliq Urdu', 'Amiri', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', Tahoma, serif;
+}
+
+/* Nastaliq Headings Line Height & Weight */
+html[dir="rtl"] h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] h3,
+html[dir="rtl"] h4,
+html[dir="rtl"] h5,
+html[dir="rtl"] h6,
+body.rtl h1,
+body.rtl h2,
+body.rtl h3,
+body.rtl h4,
+body.rtl h5,
+body.rtl h6 {
+  font-family: 'Noto Nastaliq Urdu', 'Amiri', serif;
+  line-height: 1.85;
+  font-weight: 700;
+}
+
+html[dir="rtl"] .section-title,
+body.rtl .section-title {
+  font-size: 2.15rem;
+  line-height: 1.8;
+}
+
+html[dir="rtl"] .hero-title,
+body.rtl .hero-title {
+  font-size: 2.65rem;
+  line-height: 1.8;
+}
+
+html[dir="rtl"] .hero-subtitle,
+body.rtl .hero-subtitle {
+  font-size: 1.15rem;
+  line-height: 2.1;
+}
+
+html[dir="rtl"] p,
+body.rtl p {
+  line-height: 2.05;
+}
+
+/* Navigation items in RTL */
+html[dir="rtl"] .nav-link::after,
+body.rtl .nav-link::after {
+  left: auto;
+  right: 0;
+}
+
+html[dir="rtl"] .footer-col-title::after,
+body.rtl .footer-col-title::after {
+  left: auto;
+  right: 0;
+}
+
+html[dir="rtl"] .footer-nav-list a:hover,
+body.rtl .footer-nav-list a:hover {
+  padding-left: 0;
+  padding-right: 4px;
+}
+
+/* Value items accent border */
+html[dir="rtl"] .value-item,
+body.rtl .value-item {
+  border-left: 1px solid rgba(212, 175, 55, 0.2);
+  border-right: 4px solid var(--color-gold);
+}
+
+/* Floating WhatsApp on bottom left in RTL */
+html[dir="rtl"] .floating-whatsapp,
+body.rtl .floating-whatsapp {
+  right: auto;
+  left: 25px;
+  flex-direction: row-reverse;
+}
+
+/* Mobile Drawer in RTL */
+html[dir="rtl"] .mobile-nav-drawer,
+body.rtl .mobile-nav-drawer {
+  right: auto;
+  left: -100%;
+  box-shadow: 5px 0 25px rgba(0, 0, 0, 0.4);
+  transition: left 0.35s ease-in-out;
+}
+
+html[dir="rtl"] .mobile-nav-drawer.open,
+body.rtl .mobile-nav-drawer.open {
+  right: auto;
+  left: 0;
+}
+
+/* Inquiries table in RTL */
+html[dir="rtl"] .inquiry-table,
+body.rtl .inquiry-table {
+  text-align: right;
+}
+
+/* Form controls in RTL */
+html[dir="rtl"] .form-control,
+body.rtl .form-control {
+  text-align: right;
+  direction: rtl;
+}
+
+/* Phone input format preserve left-to-right numbers */
+html[dir="rtl"] input[type="tel"],
+body.rtl input[type="tel"] {
+  direction: ltr;
+  text-align: right;
+}
+
+/* Arch divider icons */
+html[dir="rtl"] .arch-divider::before,
+body.rtl .arch-divider::before {
+  background: linear-gradient(to left, transparent, var(--color-gold));
+}
+
+html[dir="rtl"] .arch-divider::after,
+body.rtl .arch-divider::after {
+  background: linear-gradient(to right, transparent, var(--color-gold));
+}

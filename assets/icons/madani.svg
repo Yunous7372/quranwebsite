@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" width="80" height="80">
+  <defs>
+    <linearGradient id="goldMadani" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
+  </defs>
+  <circle cx="40" cy="40" r="38" fill="#0B2B26" stroke="url(#goldMadani)" stroke-width="2"/>
+  <!-- Madani Green Dome Silhouette -->
+  <path d="M 22 56 L 58 56 L 58 46 L 22 46 Z" fill="#0F4C3A" stroke="url(#goldMadani)" stroke-width="1.2"/>
+  <path d="M 22 46 C 22 30, 32 20, 40 16 C 48 20, 58 30, 58 46 Z" fill="#165B4C" stroke="url(#goldMadani)" stroke-width="1.5"/>
+  <!-- Finial and Crescent -->
+  <line x1="40" y1="16" x2="40" y2="8" stroke="url(#goldMadani)" stroke-width="2"/>
+  <circle cx="40" cy="8" r="2.5" fill="url(#goldMadani)"/>
+  <!-- Crescent on top -->
+  <path d="M 38 4 A 3 3 0 1 0 42 7 A 2.2 2.2 0 1 1 38 4" fill="url(#goldMadani)"/>
+  <!-- Open Book under dome -->
+  <path d="M 26 62 Q 40 58 54 62 L 54 68 Q 40 64 26 68 Z" fill="url(#goldMadani)"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48" height="48" fill="none" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- House with Laptop / Online Home -->
+  <path d="M6 22 L24 8 L42 22 L42 40 C42 41 41 42 40 42 L8 42 C7 42 6 41 6 40 Z" fill="#0B2B26" />
+  <rect x="16" y="24" width="16" height="12" rx="1.5" stroke="#FDE68A" />
+  <line x1="13" y1="36" x2="35" y2="36" stroke="#FDE68A" stroke-width="2.5" />
+</svg>
